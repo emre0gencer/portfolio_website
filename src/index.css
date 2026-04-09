@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 25% 8%;
+    --foreground: 220 15% 95%;
+
+    --card: 220 22% 11%;
+    --card-foreground: 220 15% 95%;
+
+    --popover: 220 22% 11%;
+    --popover-foreground: 220 15% 95%;
+
+    --primary: 220 90% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 20% 16%;
+    --secondary-foreground: 220 15% 95%;
+
+    --muted: 220 20% 16%;
+    --muted-foreground: 220 10% 55%;
+
+    --accent: 190 85% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 16%;
+    --input: 220 20% 16%;
+    --ring: 220 90% 60%;
+
+    --radius: 0.625rem;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 4px -1px hsl(0 0% 0% / 0.4);
+    --shadow-md: 0 4px 16px -4px hsl(0 0% 0% / 0.5);
+    --shadow-lg: 0 12px 40px -10px hsl(0 0% 0% / 0.6);
+    --shadow-glow: 0 0 24px hsl(220 90% 60% / 0.25);
+
+    /* Transitions */
+    --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Category colors for skill visualization */
+    --category-frontend: 220 90% 60%;
+    --category-backend: 190 85% 55%;
+    --category-devops: 280 70% 60%;
+    --category-database: 30 90% 55%;
+    --category-other: 150 70% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.02em;
+  }
+}
+
+/* ── Static background layer ───────────────────────────────────────────── */
+.site-bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Blurred blue orbs */
+.site-bg-layer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 58% 48% at  7% 10%, hsl(215 90% 62% / 0.28) 0%, transparent 62%),
+    radial-gradient(ellipse 48% 58% at 93%  8%, hsl(193 82% 64% / 0.22) 0%, transparent 62%),
+    radial-gradient(ellipse 62% 44% at 80% 90%, hsl(230 80% 60% / 0.24) 0%, transparent 62%),
+    radial-gradient(ellipse 42% 52% at 18% 82%, hsl(205 74% 58% / 0.20) 0%, transparent 62%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, hsl(218 78% 56% / 0.10) 0%, transparent 60%);
+  filter: blur(88px);
+}
+
+.site-bg-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.07;
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(220, 90%, 60%), hsl(190, 85%, 55%));
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .transition-fast {
+    transition: var(--transition-fast);
+  }
+}

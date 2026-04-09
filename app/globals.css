@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+/* ── Design tokens (exact values from original index.css) ──────────────── */
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Dark palette */
+  --color-background:              hsl(220 25% 8%);
+  --color-foreground:              hsl(220 15% 95%);
+  --color-card:                    hsl(220 22% 11%);
+  --color-card-foreground:         hsl(220 15% 95%);
+  --color-popover:                 hsl(220 22% 11%);
+  --color-popover-foreground:      hsl(220 15% 95%);
+  --color-primary:                 hsl(220 90% 60%);
+  --color-primary-foreground:      hsl(0 0% 100%);
+  --color-secondary:               hsl(220 20% 16%);
+  --color-secondary-foreground:    hsl(220 15% 95%);
+  --color-muted:                   hsl(220 20% 16%);
+  --color-muted-foreground:        hsl(220 10% 55%);
+  --color-accent:                  hsl(190 85% 55%);
+  --color-accent-foreground:       hsl(0 0% 100%);
+  --color-destructive:             hsl(0 62.8% 50%);
+  --color-destructive-foreground:  hsl(0 0% 100%);
+  --color-border:                  hsl(220 20% 16%);
+  --color-input:                   hsl(220 20% 16%);
+  --color-ring:                    hsl(220 90% 60%);
+}
+
+/* ── Base ──────────────────────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.02em;
+  }
+}
+
+/* ── Animations ────────────────────────────────────────────────────────── */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Static background orbs (exact gradient from original index.css) ────── */
+.site-bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.site-bg-layer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 58% 48% at  7% 10%, hsl(215 90% 62% / 0.28) 0%, transparent 62%),
+    radial-gradient(ellipse 48% 58% at 93%  8%, hsl(193 82% 64% / 0.22) 0%, transparent 62%),
+    radial-gradient(ellipse 62% 44% at 80% 90%, hsl(230 80% 60% / 0.24) 0%, transparent 62%),
+    radial-gradient(ellipse 42% 52% at 18% 82%, hsl(205 74% 58% / 0.20) 0%, transparent 62%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, hsl(218 78% 56% / 0.10) 0%, transparent 60%);
+  filter: blur(88px);
+}
+
+/* ── Utilities ─────────────────────────────────────────────────────────── */
+@layer utilities {
+  .transition-smooth { transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
+  .transition-fast   { transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); }
+  .shadow-glow       { box-shadow: 0 0 24px hsl(220 90% 60% / 0.25); }
+  .animate-fade-in   { animation: fade-in 0.5s ease-out; }
+  .animate-fade-up   { animation: fade-up 0.6s ease-out; }
+
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(220, 90%, 60%), hsl(190, 85%, 55%));
+  }
+}
