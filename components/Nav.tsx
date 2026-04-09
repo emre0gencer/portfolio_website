@@ -24,6 +24,8 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => { setOpen(false); }, [pathname]);
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-smooth ${
@@ -79,7 +81,6 @@ export default function Nav() {
                 <Link
                   key={href}
                   href={href}
-                  onClick={() => setOpen(false)}
                   className={`block px-3 py-2.5 text-sm font-medium rounded-md transition-fast ${
                     isActive
                       ? 'text-foreground bg-muted/60'
