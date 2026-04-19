@@ -72,7 +72,7 @@ const Education = () => {
                   </p>
                   <div className="flex flex-wrap gap-1.5">
                     {courses.map((course) => (
-                      <TechBadge key={course}>{course}</TechBadge>
+                      <TechBadge key={course} className="bg-secondary text-secondary-foreground">{course}</TechBadge>
                     ))}
                   </div>
                 </div>

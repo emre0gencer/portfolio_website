@@ -3,6 +3,7 @@ import TechBadge from "@/components/Common/TechBadge";
 import { MapPin, Calendar } from "lucide-react";
 
 interface ExperienceCardProps {
+  id?: string;
   role: string;
   organization: string;
   location?: string;
@@ -23,6 +24,7 @@ const typeAccent = {
 };
 
 const ExperienceCard = ({
+  id,
   role,
   organization,
   location,
@@ -32,7 +34,7 @@ const ExperienceCard = ({
   type = "work",
 }: ExperienceCardProps) => {
   return (
-    <Card className={`border-l-2 ${typeAccent[type]} hover:shadow-md transition-smooth bg-card`}>
+    <Card id={id} className={`border-l-2 ${typeAccent[type]} hover:shadow-md transition-smooth bg-card`}>
       <CardHeader className="pb-3">
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">

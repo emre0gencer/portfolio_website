@@ -1,11 +1,1 @@
-{
-  "version": 4,
-  "routes": {},
-  "dynamicRoutes": {},
-  "notFoundRoutes": [],
-  "preview": {
-    "previewModeId": "fd3bc1ed4751182c7aa122fdf66229d9",
-    "previewModeSigningKey": "e484cdc136d7fd71b955c832ecfcb83063d7c6c7e5f9be7e77c18c1832e79e52",
-    "previewModeEncryptionKey": "08500d2c17202eda83c1d49ae9b04c83de6ddd6f40111e8086daa716704b0d19"
-  }
-}
+{"version":4,"routes":{"/projects/executionlab-ruby":{},"/projects/applyeasy":{},"/projects/store-management-rails":{},"/projects/c0vm":{},"/projects/instacart-db-system":{},"/projects/duquesne-incline":{},"/projects/portfolio-website":{},"/projects/basketball-duels":{},"/projects/tok-tut":{},"/projects/visiosoft":{},"/projects/currency-converter":{},"/projects/hydroport":{}},"dynamicRoutes":{"/projects/[id]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/projects/[id]","routeRegex":"^\\/projects\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"c4184d800aa67121bb759ce1f4969256","previewModeSigningKey":"18435f5566b8441fae76c724a8a17ecb55ab4e890b53467ba7478395e0e5e3d2","previewModeEncryptionKey":"ce04fe3a20e8051832e6c48defb249f0dbc4310d65d90465bfefd08d59736e03"}}

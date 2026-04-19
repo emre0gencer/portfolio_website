@@ -1,11 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Section from "@/components/Common/Section";
 import PageHeader from "@/components/Common/PageHeader";
 import CourseCard from "@/components/Courses/CourseCard";
 import { courses } from "@/data/courses";
 
 const Courses = () => {
+  const location = useLocation();
   const [selectedCategory, setSelectedCategory] = useState("All");
+
+  useEffect(() => {
+    const hash = location.hash.slice(1);
+    if (!hash) return;
+    const el = document.getElementById(hash);
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
+    el.classList.remove("scroll-highlight");
+    void el.offsetWidth;
+    el.classList.add("scroll-highlight");
+  }, [location.hash]);
   
   // Define 5 main categories that best distinguish courses
   const mainCategories = [
@@ -127,6 +140,7 @@ const Courses = () => {
           {filteredCourses.map((course) => (
             <CourseCard
               key={course.id}
+              id={course.id}
               title={course.title}
               provider={course.provider}
               date={course.date}

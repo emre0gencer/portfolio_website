@@ -1,5 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { skills } from "@/data/skills";
+import { projects } from "@/data/projects";
+import { experiences } from "@/data/experience";
+import { courses } from "@/data/courses";
+import { ChevronDown, ArrowRight } from "lucide-react";
+import TechBadge from "@/components/Common/TechBadge";
+import { Link } from "react-router-dom";
 
 interface SkillItem {
   name: string;
@@ -91,6 +97,10 @@ const SkillGlobe = ({
   const animationFrameRef = useRef<number | null>(null);
   const timeRef = useRef(0);
 
+  const [openCategory, setOpenCategory] = useState<string | null>(null);
+  const openCategoryRef = useRef<string | null>(null);
+  openCategoryRef.current = openCategory;
+
   const [tooltipState, setTooltipState] = useState<{
     visible: boolean;
     x: number;
@@ -137,11 +147,12 @@ const SkillGlobe = ({
     categoryColors[cat.category] =
       css?.trim() ||
       [
-        "hsl(260 85% 65%)", // a bit brighter by default
-        "hsl(220 90% 65%)",
-        "hsl(190 85% 62%)",
-        "hsl(40 90% 62%)",
-      ][idx % 4];
+        "hsl(220 90% 65%)", // Languages — blue
+        "hsl(270 85% 65%)", // ML & AI — purple
+        "hsl(160 75% 50%)", // Data & Analytics — emerald
+        "hsl(190 85% 55%)", // Web & Backend — cyan
+        "hsl(300 70% 60%)", // Tools & DevOps — fuchsia
+      ][idx % 5];
   });
 
   useEffect(() => {
@@ -152,8 +163,8 @@ const SkillGlobe = ({
 
     const resizeCanvas = () => {
       const isMobile = window.innerWidth < 768;
-      canvas.width = isMobile ? 340 : 460;
-      canvas.height = isMobile ? 260 : 320;
+      canvas.width = isMobile ? 360 : 560;
+      canvas.height = isMobile ? 280 : 340;
     };
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
@@ -303,8 +314,10 @@ const SkillGlobe = ({
 
       const { nearest, distance } = findNearestNode(canvasX, canvasY);
       if (nearest && distance < 24) {
-        // toggle category selection via parent
         onCategorySelect(nearest.category);
+        const next = openCategoryRef.current === nearest.category ? null : nearest.category;
+        setOpenCategory(next);
+        setSelectedSkill(null);
       }
     };
 
@@ -433,49 +446,185 @@ const SkillGlobe = ({
   const categoryCounts = skills.map((category) => ({
     category: category.category,
     count: category.skills.length,
+    skills: category.skills,
   }));
 
+  const categoryBottomBorder: Record<string, string> = {
+    "Languages":       "border-b-2 border-b-blue-500",
+    "ML & AI":         "border-b-2 border-b-violet-500",
+    "Data & Analytics":"border-b-2 border-b-emerald-500",
+    "Web & Backend":   "border-b-2 border-b-cyan-500",
+    "Tools & DevOps":  "border-b-2 border-b-orange-500",
+  };
+
+  const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
+
+  const toggleDropdown = (category: string) => {
+    setOpenCategory((prev) => {
+      if (prev === category) { setSelectedSkill(null); return null; }
+      return category;
+    });
+  };
+
+  const selectSkill = (skill: string) => {
+    setSelectedSkill((prev) => prev === skill ? null : skill);
+  };
+
+  // Build featured work for selected skill
+  const featuredWork = selectedSkill ? [
+    ...projects
+      .filter((p) => p.techStack.includes(selectedSkill))
+      .map((p) => ({
+        key: `proj-${p.id}`,
+        title: p.title,
+        summary: p.description.split(".")[0] + ".",
+        href: `/projects/${p.id}`,
+        type: "Project" as const,
+      })),
+    ...experiences
+      .filter((e) => e.skills.includes(selectedSkill))
+      .map((e) => ({
+        key: `exp-${e.id}`,
+        title: `${e.role} @ ${e.organization}`,
+        summary: e.description[0],
+        href: `/experience?view=cards#${e.id}`,
+        type: "Experience" as const,
+      })),
+    ...courses
+      .filter((c) => c.categories.includes(selectedSkill))
+      .map((c) => ({
+        key: `course-${c.id}`,
+        title: c.title,
+        summary: c.description ? c.description.split(".")[0] + "." : "",
+        href: `/courses#${c.id}`,
+        type: "Course" as const,
+      })),
+  ] : [];
+
+  const typePill: Record<string, string> = {
+    Project:    "bg-blue-500/15 text-blue-600 dark:text-blue-300",
+    Experience: "bg-violet-500/15 text-violet-600 dark:text-violet-300",
+    Course:     "bg-emerald-500/15 text-emerald-600 dark:text-emerald-300",
+  };
+
   return (
-    <div className="flex flex-col items-center gap-8">
+    <div className="flex flex-col items-center gap-8" onClick={(e) => {
+      if (!(e.target as Element).closest("[data-category-box]")) {
+        setOpenCategory(null);
+        setSelectedSkill(null);
+      }
+    }}>
       <div className="relative">
         <canvas
           ref={canvasRef}
+          data-category-box
           className="
-            w-full h-auto max-w-sm 
-            rounded-2xl 
-            bg-gradient-to-br from-background via-background/90 to-background 
+            w-full h-auto max-w-lg
+            rounded-2xl
+            bg-linear-to-br from-background via-background/90 to-background
             shadow-[0_0_60px_rgba(15,23,42,0.9)]
           "
         />
 
-        {/* Tooltip stays the same below */}
         {tooltipState.visible && (
           <div
             className="pointer-events-none absolute z-20 rounded-md bg-popover px-2 py-1 text-xs text-popover-foreground shadow-md border border-border"
-            style={{
-              left: tooltipState.x,
-              top: tooltipState.y,
-            }}
+            style={{ left: tooltipState.x, top: tooltipState.y }}
           >
             {tooltipState.text}
           </div>
         )}
       </div>
 
+      {/* Category legend + dropdowns */}
+      <div className="w-full max-w-xl" data-category-box>
+        <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
+          {categoryCounts.map((item) => {
+            const isOpen = openCategory === item.category;
+            return (
+              <button
+                key={item.category}
+                onClick={() => toggleDropdown(item.category)}
+                className={`w-full p-3 rounded-lg border transition-all duration-200 text-center cursor-pointer ${categoryBottomBorder[item.category] ?? ""} ${
+                  isOpen
+                    ? "bg-primary/10 border-primary shadow-[0_0_12px_rgba(59,130,246,0.25)]"
+                    : "bg-muted/50 border-border hover:border-primary/50 hover:bg-primary/5"
+                }`}
+              >
+                <p className="font-semibold text-sm text-primary">{item.count}</p>
+                <p className="text-xs text-muted-foreground capitalize">{item.category}</p>
+                <ChevronDown
+                  className={`h-3 w-3 mx-auto mt-1 text-primary/60 transition-transform duration-200 ${
+                    isOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+            );
+          })}
+        </div>
 
-      {/* Category legend under the network */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 w-full max-w-md">
-        {categoryCounts.map((item) => (
-          <div
-            key={item.category}
-            className="p-3 rounded-lg bg-muted/50 border border-border hover:border-primary/50 transition-smooth text-center"
-          >
-            <p className="font-semibold text-sm text-primary">{item.count}</p>
-            <p className="text-xs text-muted-foreground capitalize">
-              {item.category}
-            </p>
-          </div>
-        ))}
+        {/* Skill badges panel */}
+        <div
+          className="overflow-hidden transition-all duration-300 ease-in-out"
+          style={{ maxHeight: openCategory ? "200px" : "0px" }}
+        >
+          {categoryCounts.map((item) => (
+            <div key={item.category}>
+              {openCategory === item.category && (
+                <div className="mt-2 rounded-xl border border-primary/30 bg-background/95 backdrop-blur-sm shadow-[0_8px_32px_rgba(59,130,246,0.2)] p-3">
+                  <div className="flex flex-wrap gap-1.5 justify-center">
+                    {item.skills.map((skill) => (
+                      <button
+                        key={skill}
+                        onClick={(e) => { e.stopPropagation(); selectSkill(skill); }}
+                        className={`transition-all duration-150 rounded-sm ${selectedSkill === skill ? "ring-1 ring-primary/60 scale-105" : "hover:scale-105"}`}
+                      >
+                        <TechBadge>{skill}</TechBadge>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Featured Work panel */}
+        <div
+          className="overflow-hidden transition-all duration-300 ease-in-out"
+          style={{ maxHeight: selectedSkill && featuredWork.length > 0 ? `${featuredWork.length * 72 + 60}px` : "0px" }}
+        >
+          {selectedSkill && featuredWork.length > 0 && (
+            <div className="mt-3 rounded-xl border border-border bg-muted/30 p-4">
+              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-3">
+                Featured Work — {selectedSkill}
+              </p>
+              <ul className="space-y-2">
+                {featuredWork.map((item) => (
+                  <li key={item.key}>
+                    <Link
+                      to={item.href}
+                      className="flex items-start gap-3 group rounded-lg px-2 py-1.5 hover:bg-primary/5 transition-colors"
+                    >
+                      <span className={`mt-0.5 shrink-0 text-[10px] font-semibold px-1.5 py-0.5 rounded ${typePill[item.type]}`}>
+                        {item.type}
+                      </span>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors truncate">
+                          {item.title}
+                        </p>
+                        <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1">
+                          {item.summary}
+                        </p>
+                      </div>
+                      <ArrowRight className="h-3.5 w-3.5 shrink-0 mt-1 text-muted-foreground/50 group-hover:text-primary transition-colors" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
       </div>
 
       <p className="text-center text-sm text-muted-foreground max-w-md">

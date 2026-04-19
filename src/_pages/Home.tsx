@@ -148,22 +148,20 @@ const Home = () => {
           <h2 className="text-2xl font-semibold tracking-tight">Skills & Technologies</h2>
         </div>
 
-        <div className="flex justify-center">
-          <SkillGlobe
-            hoveredCategory={hoveredCategory}
-            selectedCategory={selectedCategory}
-            onSkillHover={(_name, category) => {
-              setHoveredCategory(category);
-            }}
-            onCategorySelect={(category) => {
-              if (!category) {
-                setSelectedCategory(null);
-              } else {
-                toggleCategorySelection(category);
-              }
-            }}
-          />
-        </div>
+        <SkillGlobe
+          hoveredCategory={hoveredCategory}
+          selectedCategory={selectedCategory}
+          onSkillHover={(_name, category) => {
+            setHoveredCategory(category);
+          }}
+          onCategorySelect={(category) => {
+            if (!category) {
+              setSelectedCategory(null);
+            } else {
+              toggleCategorySelection(category);
+            }
+          }}
+        />
       </Section>
 
       {/* Recent Experience */}

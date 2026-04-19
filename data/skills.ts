@@ -6,18 +6,22 @@ export interface SkillCategory {
 export const skills: SkillCategory[] = [
   {
     category: "Languages",
-    skills: ["Python", "Java", "C", "JavaScript", "SQL", "HTML", "CSS"],
+    skills: ["Python", "Java", "C", "JavaScript", "TypeScript", "SQL", "R"],
+  },
+  {
+    category: "ML & AI",
+    skills: ["scikit-learn", "PyTorch", "CNNs", "Vision Transformers", "Transfer Learning", "LLM Integration", "Computer Vision", "NLP"],
+  },
+  {
+    category: "Data & Analytics",
+    skills: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Exploratory Data Analysis", "Statistical Modeling", "Data Visualization", "A/B Testing", "SPSS"],
   },
   {
     category: "Web & Backend",
-    skills: ["React", "Node.js", "Ruby on Rails", "REST APIs", "Chrome Extensions", "Responsive Design"],
+    skills: ["React", "FastAPI", "Node.js", "Ruby on Rails", "REST APIs", "PostgreSQL", "SQLite"],
   },
   {
-    category: "AI & Data",
-    skills: ["Machine Learning", "Computer Vision", "CNNs", "Vision Transformers", "Transfer Learning", "Data Analytics", "SPSS"],
-  },
-  {
-    category: "Tools & Workflow",
-    skills: ["Git", "VS Code", "Jupyter", "Statistical Analysis", "Research Methods", "Agile"],
+    category: "Tools & DevOps",
+    skills: ["Git", "GitHub Actions", "Jupyter", "Docker", "Linux", "Agile", "VS Code"],
   },
 ];

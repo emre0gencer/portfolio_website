@@ -5,10 +5,10 @@ import { ArrowRight, Download } from 'lucide-react';
 import Section from '@/components/Common/Section';
 import ProjectCard from '@/components/Projects/ProjectCard';
 import ExperienceCard from '@/components/Experience/ExperienceCard';
-import TechBadge from '@/components/Common/TechBadge';
 import { projects } from '@/data/projects';
 import { experiences } from '@/data/experience';
-import { skills } from '@/data/skills';
+import SkillGlobe from '@/components/Common/SkillGlobe';
+import VantaWaves from '@/components/Common/VantaWaves';
 
 export const metadata: Metadata = {
   title: 'Emre Gencer',
@@ -23,6 +23,8 @@ export default function HomePage() {
     <div className="min-h-screen text-foreground">
       {/* ── Hero ──────────────────────────────────────────────── */}
       <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden">
+        <VantaWaves />
+        <div className="absolute inset-0 bg-background/60" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-2xl mx-auto text-center animate-fade-up">
             {/* Profile photo */}
@@ -102,20 +104,7 @@ export default function HomePage() {
         <div className="mb-8">
           <h2 className="text-2xl font-semibold tracking-tight">Skills & Technologies</h2>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {skills.map((group) => (
-            <div key={group.category}>
-              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">
-                {group.category}
-              </p>
-              <div className="flex flex-wrap gap-1.5">
-                {group.skills.map((skill) => (
-                  <TechBadge key={skill}>{skill}</TechBadge>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        <SkillGlobe />
       </Section>
 
       {/* ── Recent Experience ─────────────────────────────────── */}

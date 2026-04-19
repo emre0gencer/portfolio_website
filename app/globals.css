@@ -83,6 +83,14 @@
   filter: blur(88px);
 }
 
+@keyframes scroll-highlight {
+  0%   { box-shadow: 0 0 0 2px hsl(220 90% 60% / 0.8), 0 0 24px hsl(220 90% 60% / 0.4); }
+  100% { box-shadow: none; }
+}
+.scroll-highlight {
+  animation: scroll-highlight 1.8s ease-out forwards;
+}
+
 /* ── Utilities ─────────────────────────────────────────────────────────── */
 @layer utilities {
   .transition-smooth { transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }

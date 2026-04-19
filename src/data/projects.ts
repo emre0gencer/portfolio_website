@@ -65,7 +65,7 @@ export const projects: Project[] = [
     role: "Full-Stack Developer",
     description:
       "Full-stack AI platform that tailors resumes to specific job descriptions using semantic relevance ranking, LLM-based bullet rewriting, and one-page PDF rendering. Features a multi-step backend pipeline covering profile extraction, job analysis, fit scoring, resume generation, validation, and export — with built-in safeguards against hallucinated claims and keyword stuffing.",
-    techStack: ["Python", "FastAPI", "React", "TypeScript", "Jinja2", "SQLite", "LLM Integration", "Semantic Matching"],
+    techStack: ["Python", "FastAPI", "React", "TypeScript", "SQLite", "LLM Integration", "Semantic Matching", "NLP"],
     category: "Web Dev",
     categories: ["Web Dev", "AI & Data", "Full-Stack Development"],
     date: "2026",
@@ -95,7 +95,7 @@ export const projects: Project[] = [
       "Full-stack web application built with Ruby on Rails, designed around a carefully planned ERD and translated into ActiveRecord models with validations, associations, and database constraints. Developed across the full MVC stack — routes, controllers, models, and views — connecting backend business logic with user-facing functionality and emphasizing maintainable, correct relational data workflows.",
     techStack: ["Ruby", "Ruby on Rails", "ActiveRecord", "MVC Architecture", "ERD", "SQL", "HTML", "CSS"],
     category: "Web Dev",
-    categories: ["Web Dev", "Backend Systems"],
+    categories: ["Web Dev", "Backend Systems", "Databases"],
     date: "2026",
     details: {
       problem:
@@ -227,7 +227,8 @@ export const projects: Project[] = [
       "Vite",
       "React Router",
       "shadcn/ui",
-      "GitHub Pages"
+      "GitHub Pages",
+      "GitHub Actions"
     ],
     category: "Web Dev",
     categories: ["Web Dev", "Frontend Development"],
@@ -277,7 +278,7 @@ export const projects: Project[] = [
     title: "TOK-TUT Earthquake Relief Platform",
     role: "Co-Founder, Developer",
     description: "High-impact visual computing platform developed in response to the 2023 Turkey earthquakes, enabling rapid and transparent coordination of relief efforts. The system processed and visualized images, videos, and QR-based donation data in real time.",
-    techStack: ["Visual Computing", "Image Processing", "Video Processing", "QR Codes", "Data Analytics"],
+    techStack: ["Python", "Data Visualization", "Image Processing", "Video Processing", "QR Codes", "Data Analytics"],
     category: "Community Impact",
     date: "2023",
     liveUrl: "https://drive.google.com/file/d/1kDBAwEYzf0SXLgMciZydWeeN4hbkTOxP/view?usp=sharing",
@@ -299,7 +300,7 @@ export const projects: Project[] = [
     role: "Designer, Developer",
     description: "AI-powered startup concept utilizing Transfer Learning to extract information from camera footage for enhanced public security.",
     impact: "1st Place: Human-Centered AI & UN SDG Good Health and Wellbeing",
-    techStack: ["AI", "Computer Vision", "Transfer Learning", "Video Analysis"],
+    techStack: ["Python", "Computer Vision", "Transfer Learning", "PyTorch", "Video Analysis"],
     category: "Hackathon",
     date: "Jul-Oct 2023",
     liveUrl: "https://drive.google.com/file/d/10AOQRtBcEIV1VmgJ-oDvPwjTtSYg1Zfh/view?usp=sharing",
@@ -344,7 +345,7 @@ export const projects: Project[] = [
     role: "Designer, Developer",
     description: "AI/ML-driven autonomous clean water delivery system combining satellite data, automated transfers, and sustainable energy.",
     impact: "1st Place: UN SDG Clean Water & Social Innovation",
-    techStack: ["AI", "Machine Learning", "IoT", "Satellite Data", "Autonomous Systems"],
+    techStack: ["Python", "Machine Learning", "scikit-learn", "IoT", "Satellite Data", "Autonomous Systems"],
     category: "Hackathon",
     date: "Jul-Sept 2022",
     liveUrl: "https://drive.google.com/file/d/1lrAaoNR0M5finkQphWzTOIJWsdAXotol/view?usp=sharing",

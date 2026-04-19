@@ -26,7 +26,7 @@ export const experiences: Experience[] = [
       'Assessed alignment with UN Sustainable Development Goals and corporate responsibility initiatives',
       'Gained hands-on experience with production ML systems at enterprise scale',
     ],
-    skills: ['Python', 'SQL', 'Pandas', 'NumPy', 'scikit-learn', 'Statistical Modeling'],
+    skills: ["Python", "SQL", "Pandas", "NumPy", "scikit-learn", "Statistical Modeling"],
   },
   {
     id: 'salesforce',
@@ -42,7 +42,7 @@ export const experiences: Experience[] = [
       'Examined application of AI tools for marketing campaign optimization',
       'Evaluated diversity, inclusion, and social responsibility initiatives',
     ],
-    skills: ['Exploratory Data Analysis (EDA)', 'Statistical Modeling', 'Data Visualization', 'A/B Testing Concepts', 'Business Intelligence', 'SPSS', 'AI-Assisted Analytics'],
+    skills: ["Exploratory Data Analysis", "Statistical Modeling", "Data Visualization", "A/B Testing", "SPSS", "Pandas", "Python"],
   },
   {
     id: 'cerrahpasa',
@@ -59,7 +59,7 @@ export const experiences: Experience[] = [
       'Mentored by Oxford Tutor Joseph Young throughout research process',
       'Published in Journal of Next Frontier for Life Sciences and AI (2023, Volume 6, Issue 2)',
     ],
-    skills: ['Computer Vision', 'CNNs', 'Vision Transformers', 'Machine Learning', 'Research Methods'],
+    skills: ["Computer Vision", "CNNs", "Vision Transformers", "PyTorch", "scikit-learn", "Statistical Modeling"],
   },
   {
     id: 'rcec',

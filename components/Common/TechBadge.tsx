@@ -12,12 +12,12 @@ const TechBadge = ({ children, className, variant }: TechBadgeProps) => {
   const colorClasses =
     variant === 'outline'
       ? 'border border-border text-muted-foreground'
-      : (techColorMap[key] ?? 'bg-secondary text-secondary-foreground');
+      : (techColorMap[key] ?? '');
 
   return (
     <span
       className={cn(
-        'inline-flex items-center px-2 py-0.5 text-[11px] font-medium rounded',
+        'inline-flex items-center px-2 py-0.5 text-[11px] font-medium rounded-sm bg-secondary text-secondary-foreground',
         colorClasses,
         className
       )}

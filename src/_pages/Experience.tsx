@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Section from "@/components/Common/Section";
 import PageHeader from "@/components/Common/PageHeader";
 import ExperienceCard from "@/components/Experience/ExperienceCard";
@@ -7,8 +8,23 @@ import { experiences } from "@/data/experience";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Experience = () => {
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
   const [selectedType, setSelectedType] = useState<"all" | "work" | "research" | "volunteer">("all");
-  const [viewMode, setViewMode] = useState<"cards" | "timeline">("timeline");
+  const [viewMode, setViewMode] = useState<"cards" | "timeline">(
+    params.get("view") === "cards" ? "cards" : "timeline"
+  );
+
+  useEffect(() => {
+    const hash = location.hash.slice(1);
+    if (!hash) return;
+    const el = document.getElementById(hash);
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
+    el.classList.remove("scroll-highlight");
+    void el.offsetWidth; // force reflow to restart animation
+    el.classList.add("scroll-highlight");
+  }, [location.hash, viewMode]);
 
   const filteredExperiences =
     selectedType === "all"
@@ -59,6 +75,7 @@ const Experience = () => {
               {filteredExperiences.map((exp) => (
                 <ExperienceCard
                   key={exp.id}
+                  id={exp.id}
                   role={exp.role}
                   organization={exp.organization}
                   location={exp.location}

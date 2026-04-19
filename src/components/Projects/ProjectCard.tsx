@@ -5,6 +5,7 @@ import { ExternalLink, Github, Award } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface ProjectCardProps {
+  id?: string;
   title: string;
   description: string;
   techStack: string[];
@@ -16,6 +17,7 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({
+  id,
   title,
   description,
   techStack,
@@ -26,7 +28,7 @@ const ProjectCard = ({
   impact,
 }: ProjectCardProps) => {
   return (
-    <Card className="group h-full flex flex-col overflow-hidden border-border hover:border-border/80 hover:shadow-md transition-smooth bg-card">
+    <Card id={id} className="group h-full flex flex-col overflow-hidden border-border hover:border-border/80 hover:shadow-md transition-smooth bg-card">
       <CardHeader className="pb-3">
         <div className="flex items-start justify-between gap-2 mb-1">
           <CardTitle className="text-base font-semibold leading-snug group-hover:text-primary transition-fast">

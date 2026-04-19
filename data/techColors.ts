@@ -1,126 +1,137 @@
 /**
- * Skill → badge color mapping.
- * Palette: 8 domain colors, all tuned for dark backgrounds.
- *   blue    → Python & data processing
- *   indigo  → TypeScript & architecture
- *   cyan    → React & frontend frameworks
- *   amber   → JavaScript & scripting
- *   violet  → AI / ML / research
- *   teal    → SQL, databases & backend
- *   rose    → Ruby / Rails & visual media
- *   sky     → CSS, styling & APIs
- *   emerald → Data science & systems/hardware
- *   slate   → Low-level systems, C, tools
- *   orange  → HTML & markup
+ * Global skill → color mapping.
+ * Each value is a border-left + border-bottom accent color class only.
+ * The badge itself uses a neutral background (bg-secondary) so text is always readable.
+ * One hue per technology domain.
+ *
+ * Domain → hue:
+ *   Languages                              → blue
+ *   ML & AI                                → violet
+ *   Data & Analytics                       → emerald
+ *   Web & Backend (React/Node/APIs)        → cyan
+ *   Ruby ecosystem                         → rose
+ *   Databases / SQL schemas                → teal
+ *   Systems/low-level / C                  → yellow
+ *   Tools & DevOps                         → orange
+ *   Game dev / misc                        → lime
+ *   External APIs                          → sky
+ *   Visual Computing / Media               → pink
  */
 export const techColorMap: Record<string, string> = {
 
-  // ── Python ───────────────────────────────────────────── blue
-  "Python":                          "bg-blue-500/15 text-blue-300",
-  "FastAPI":                         "bg-blue-500/15 text-blue-300",
-  "Pandas":                          "bg-blue-500/15 text-blue-300",
-  "NumPy":                           "bg-blue-500/15 text-blue-300",
-  "scikit-learn":                    "bg-blue-500/15 text-blue-300",
-  "psycopg2":                        "bg-blue-500/15 text-blue-300",
+  // ── Languages ──────────────────────────────────────────── blue
+  "Python":               "border-l-2 border-b-2 border-blue-500",
+  "Java":                 "border-l-2 border-b-2 border-blue-600",
+  "C":                    "border-l-2 border-b-2 border-blue-400",
+  "JavaScript":           "border-l-2 border-b-2 border-blue-500",
+  "TypeScript":           "border-l-2 border-b-2 border-blue-600",
+  "SQL":                  "border-l-2 border-b-2 border-blue-400",
+  "R":                    "border-l-2 border-b-2 border-blue-500",
 
-  // ── TypeScript & Architecture ─────────────────────────── indigo
-  "TypeScript":                      "bg-indigo-500/15 text-indigo-300",
-  "MVC Architecture":                "bg-indigo-500/15 text-indigo-300",
-  "ERD":                             "bg-indigo-500/15 text-indigo-300",
-  "Object-Oriented Programming":     "bg-indigo-500/15 text-indigo-300",
+  // ── ML & AI ────────────────────────────────────────────── violet
+  "Machine Learning":     "border-l-2 border-b-2 border-violet-500",
+  "scikit-learn":         "border-l-2 border-b-2 border-violet-600",
+  "PyTorch":              "border-l-2 border-b-2 border-violet-500",
+  "CNNs":                 "border-l-2 border-b-2 border-violet-400",
+  "Vision Transformers":  "border-l-2 border-b-2 border-violet-600",
+  "Transfer Learning":    "border-l-2 border-b-2 border-violet-500",
+  "LLM Integration":      "border-l-2 border-b-2 border-violet-600",
+  "Computer Vision":      "border-l-2 border-b-2 border-violet-400",
+  "NLP":                  "border-l-2 border-b-2 border-violet-500",
+  "AI":                   "border-l-2 border-b-2 border-violet-400",
+  "Semantic Matching":    "border-l-2 border-b-2 border-violet-600",
+  "Research Methods":     "border-l-2 border-b-2 border-violet-400",
 
-  // ── React & Frontend Frameworks ───────────────────────── cyan
-  "React":                           "bg-cyan-500/15 text-cyan-300",
-  "React Router":                    "bg-cyan-500/15 text-cyan-300",
-  "Next.js":                         "bg-cyan-500/15 text-cyan-300",
+  // ── Data & Analytics ───────────────────────────────────── emerald
+  "Pandas":                           "border-l-2 border-b-2 border-emerald-500",
+  "NumPy":                            "border-l-2 border-b-2 border-emerald-400",
+  "Matplotlib":                       "border-l-2 border-b-2 border-emerald-500",
+  "Seaborn":                          "border-l-2 border-b-2 border-emerald-400",
+  "Exploratory Data Analysis":        "border-l-2 border-b-2 border-emerald-600",
+  "Exploratory Data Analysis (EDA)":  "border-l-2 border-b-2 border-emerald-600",
+  "Statistical Modeling":             "border-l-2 border-b-2 border-emerald-500",
+  "Data Visualization":               "border-l-2 border-b-2 border-emerald-600",
+  "A/B Testing":                      "border-l-2 border-b-2 border-emerald-400",
+  "A/B Testing Concepts":             "border-l-2 border-b-2 border-emerald-400",
+  "SPSS":                             "border-l-2 border-b-2 border-emerald-500",
+  "Data Analytics":                   "border-l-2 border-b-2 border-emerald-600",
+  "Business Intelligence":            "border-l-2 border-b-2 border-emerald-500",
+  "AI-Assisted Analytics":            "border-l-2 border-b-2 border-emerald-400",
+  "psycopg2":                         "border-l-2 border-b-2 border-emerald-400",
+  "CSV-based Data Loading":           "border-l-2 border-b-2 border-emerald-400",
 
-  // ── JavaScript & Scripting ────────────────────────────── amber
-  "JavaScript":                      "bg-amber-500/15 text-amber-300",
-  "jQuery":                          "bg-amber-500/15 text-amber-300",
-  "Chrome Extension API":            "bg-amber-500/15 text-amber-300",
+  // ── Web & Backend ──────────────────────────────────────── cyan
+  "React":                "border-l-2 border-b-2 border-cyan-500",
+  "React Router":         "border-l-2 border-b-2 border-cyan-400",
+  "Node.js":              "border-l-2 border-b-2 border-cyan-500",
+  "FastAPI":              "border-l-2 border-b-2 border-cyan-600",
+  "REST APIs":            "border-l-2 border-b-2 border-cyan-400",
+  "Chrome Extension API": "border-l-2 border-b-2 border-cyan-500",
+  "Chrome Extensions":    "border-l-2 border-b-2 border-cyan-500",
+  "Responsive Design":    "border-l-2 border-b-2 border-cyan-400",
+  "jQuery":               "border-l-2 border-b-2 border-cyan-400",
+  "Jinja2":               "border-l-2 border-b-2 border-cyan-500",
+  "MVC Architecture":     "border-l-2 border-b-2 border-cyan-600",
+  "ERD":                  "border-l-2 border-b-2 border-cyan-400",
+  "Web Application Development": "border-l-2 border-b-2 border-cyan-500",
 
-  // ── HTML & Markup ─────────────────────────────────────── orange
-  "HTML":                            "bg-orange-500/15 text-orange-300",
-  "Jinja2":                          "bg-orange-500/15 text-orange-300",
+  // ── Ruby ecosystem ─────────────────────────────────────── rose
+  "Ruby":                 "border-l-2 border-b-2 border-rose-400",
+  "Ruby on Rails":        "border-l-2 border-b-2 border-rose-500",
+  "ActiveRecord":         "border-l-2 border-b-2 border-rose-400",
 
-  // ── CSS & Styling ─────────────────────────────────────── sky
-  "CSS":                             "bg-sky-500/15 text-sky-300",
-  "Tailwind CSS":                    "bg-sky-500/15 text-sky-300",
+  // ── Databases ──────────────────────────────────────────── teal
+  "PostgreSQL":                   "border-l-2 border-b-2 border-teal-600",
+  "SQLite":                       "border-l-2 border-b-2 border-teal-400",
+  "SQL (DDL & DML)":              "border-l-2 border-b-2 border-teal-500",
+  "BCNF Normalization":           "border-l-2 border-b-2 border-teal-500",
+  "Triggers & Trigger Functions": "border-l-2 border-b-2 border-teal-400",
+  "Window Functions":             "border-l-2 border-b-2 border-teal-600",
+  "Vertabelo":                    "border-l-2 border-b-2 border-teal-400",
+  "Object-Oriented Programming":  "border-l-2 border-b-2 border-teal-500",
 
-  // ── Ruby & Rails ──────────────────────────────────────── rose
-  "Ruby":                            "bg-rose-500/15 text-rose-300",
-  "Ruby on Rails":                   "bg-rose-500/15 text-rose-300",
-  "ActiveRecord":                    "bg-rose-500/15 text-rose-300",
+  // ── Systems / low-level ────────────────────────────────── yellow
+  "Systems Programming":       "border-l-2 border-b-2 border-yellow-500",
+  "Virtual Machines":          "border-l-2 border-b-2 border-yellow-400",
+  "Bytecode Interpreters":     "border-l-2 border-b-2 border-yellow-500",
+  "Memory Management":         "border-l-2 border-b-2 border-yellow-600",
+  "Stack & Call Frame Design": "border-l-2 border-b-2 border-yellow-400",
+  "Low-Level Debugging":       "border-l-2 border-b-2 border-yellow-600",
+  "Valgrind":                  "border-l-2 border-b-2 border-yellow-500",
+  "Performance Benchmarking":  "border-l-2 border-b-2 border-yellow-400",
+  "Embedded Systems":          "border-l-2 border-b-2 border-yellow-500",
+  "Electronics":               "border-l-2 border-b-2 border-yellow-400",
+  "IoT":                       "border-l-2 border-b-2 border-yellow-600",
+  "Autonomous Systems":        "border-l-2 border-b-2 border-yellow-500",
+  "Satellite Data":            "border-l-2 border-b-2 border-yellow-400",
 
-  // ── SQL & Databases ───────────────────────────────────── teal
-  "SQL":                             "bg-teal-500/15 text-teal-300",
-  "SQL (DDL & DML)":                 "bg-teal-500/15 text-teal-300",
-  "PostgreSQL":                      "bg-teal-500/15 text-teal-300",
-  "SQLite":                          "bg-teal-500/15 text-teal-300",
-  "BCNF Normalization":              "bg-teal-500/15 text-teal-300",
-  "Triggers & Trigger Functions":    "bg-teal-500/15 text-teal-300",
-  "Window Functions":                "bg-teal-500/15 text-teal-300",
-  "CSV-based Data Loading":          "bg-teal-500/15 text-teal-300",
-  "Vertabelo":                       "bg-teal-500/15 text-teal-300",
+  // ── Tools & DevOps ─────────────────────────────────────── orange
+  "Git":              "border-l-2 border-b-2 border-orange-500",
+  "GitHub Actions":   "border-l-2 border-b-2 border-orange-600",
+  "GitHub Pages":     "border-l-2 border-b-2 border-orange-400",
+  "Jupyter":          "border-l-2 border-b-2 border-orange-500",
+  "Docker":           "border-l-2 border-b-2 border-orange-600",
+  "Linux":            "border-l-2 border-b-2 border-orange-500",
+  "Agile":            "border-l-2 border-b-2 border-orange-400",
+  "VS Code":          "border-l-2 border-b-2 border-orange-400",
+  "Vite":             "border-l-2 border-b-2 border-orange-500",
+  "shadcn/ui":        "border-l-2 border-b-2 border-orange-400",
+  "HTML":             "border-l-2 border-b-2 border-orange-500",
+  "CSS":              "border-l-2 border-b-2 border-orange-400",
+  "Tailwind CSS":     "border-l-2 border-b-2 border-orange-500",
 
-  // ── AI / ML / Research ───────────────────────────────── violet
-  "AI":                              "bg-violet-500/15 text-violet-300",
-  "Machine Learning":                "bg-violet-500/15 text-violet-300",
-  "LLM Integration":                 "bg-violet-500/15 text-violet-300",
-  "Semantic Matching":               "bg-violet-500/15 text-violet-300",
-  "Transfer Learning":               "bg-violet-500/15 text-violet-300",
-  "Computer Vision":                 "bg-violet-500/15 text-violet-300",
-  "CNNs":                            "bg-violet-500/15 text-violet-300",
-  "Vision Transformers":             "bg-violet-500/15 text-violet-300",
-  "Research Methods":                "bg-violet-500/15 text-violet-300",
+  // ── Visual Computing / Media ───────────────────────────── pink
+  "Visual Computing": "border-l-2 border-b-2 border-pink-500",
+  "Image Processing": "border-l-2 border-b-2 border-pink-400",
+  "Video Processing": "border-l-2 border-b-2 border-pink-500",
+  "Video Analysis":   "border-l-2 border-b-2 border-pink-400",
+  "QR Codes":         "border-l-2 border-b-2 border-pink-600",
 
-  // ── Visual Computing / Media ──────────────────────────── rose
-  "Visual Computing":                "bg-rose-500/15 text-rose-300",
-  "Image Processing":                "bg-rose-500/15 text-rose-300",
-  "Video Processing":                "bg-rose-500/15 text-rose-300",
-  "Video Analysis":                  "bg-rose-500/15 text-rose-300",
-  "QR Codes":                        "bg-rose-500/15 text-rose-300",
-  "Data Analytics":                  "bg-rose-500/15 text-rose-300",
+  // ── Game dev / misc ────────────────────────────────────── lime
+  "pygame":                       "border-l-2 border-b-2 border-lime-500",
+  "Game Loop & State Management": "border-l-2 border-b-2 border-lime-400",
 
-  // ── Data Science ─────────────────────────────────────── emerald
-  "Exploratory Data Analysis (EDA)": "bg-emerald-500/15 text-emerald-300",
-  "Statistical Modeling":            "bg-emerald-500/15 text-emerald-300",
-  "Data Visualization":              "bg-emerald-500/15 text-emerald-300",
-  "A/B Testing Concepts":            "bg-emerald-500/15 text-emerald-300",
-  "Business Intelligence":           "bg-emerald-500/15 text-emerald-300",
-
-  // ── IoT / Hardware / Autonomous ───────────────────────── emerald
-  "IoT":                             "bg-emerald-500/15 text-emerald-300",
-  "Satellite Data":                  "bg-emerald-500/15 text-emerald-300",
-  "Autonomous Systems":              "bg-emerald-500/15 text-emerald-300",
-  "Embedded Systems":                "bg-emerald-500/15 text-emerald-300",
-  "Electronics":                     "bg-emerald-500/15 text-emerald-300",
-
-  // ── Systems / C / Low-level ───────────────────────────── slate
-  "C":                               "bg-slate-500/15 text-slate-300",
-  "Systems Programming":             "bg-slate-500/15 text-slate-300",
-  "Virtual Machines":                "bg-slate-500/15 text-slate-300",
-  "Bytecode Interpreters":           "bg-slate-500/15 text-slate-300",
-  "Memory Management":               "bg-slate-500/15 text-slate-300",
-  "Stack & Call Frame Design":       "bg-slate-500/15 text-slate-300",
-  "Low-Level Debugging":             "bg-slate-500/15 text-slate-300",
-  "Valgrind":                        "bg-slate-500/15 text-slate-300",
-  "Performance Benchmarking":        "bg-slate-500/15 text-slate-300",
-
-  // ── External APIs ─────────────────────────────────────── sky
-  "OpenWeatherMap API":              "bg-sky-500/15 text-sky-300",
-  "Google Maps Embed API":           "bg-sky-500/15 text-sky-300",
-
-  // ── Java ──────────────────────────────────────────────── amber
-  "Java":                            "bg-amber-500/15 text-amber-300",
-
-  // ── Game Dev ─────────────────────────────────────────── indigo
-  "pygame":                          "bg-indigo-500/15 text-indigo-300",
-  "Game Loop & State Management":    "bg-indigo-500/15 text-indigo-300",
-
-  // ── Build / Tools ─────────────────────────────────────── slate
-  "Vite":                            "bg-slate-500/15 text-slate-300",
-  "shadcn/ui":                       "bg-slate-500/15 text-slate-300",
-  "GitHub Pages":                    "bg-slate-500/15 text-slate-300",
-  "Git":                             "bg-slate-500/15 text-slate-300",
+  // ── External APIs ──────────────────────────────────────── sky
+  "OpenWeatherMap API":    "border-l-2 border-b-2 border-sky-500",
+  "Google Maps Embed API": "border-l-2 border-b-2 border-sky-400",
 };

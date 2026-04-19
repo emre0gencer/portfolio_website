@@ -4,6 +4,7 @@ import TechBadge from "@/components/Common/TechBadge";
 import { Award, Calendar, ExternalLink } from "lucide-react";
 
 interface CourseCardProps {
+  id?: string;
   title: string;
   provider: string;
   date?: string;
@@ -14,6 +15,7 @@ interface CourseCardProps {
 }
 
 const CourseCard = ({
+  id,
   title,
   provider,
   date,
@@ -23,7 +25,7 @@ const CourseCard = ({
   certificateUrl,
 }: CourseCardProps) => {
   return (
-    <Card className="hover:shadow-md transition-smooth border-border hover:border-primary/30 flex flex-col h-full">
+    <Card id={id} className="hover:shadow-md transition-smooth border-border hover:border-primary/30 flex flex-col h-full">
       <CardHeader className="pb-3">
         <div className="flex items-start justify-between gap-2">
           <CardTitle className="text-base">{title}</CardTitle>

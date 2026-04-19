@@ -14,7 +14,7 @@ const TechBadge = ({ children, className }: TechBadgeProps) => {
   return (
     <span
       className={cn(
-        "inline-flex items-center px-2 py-0.5 text-[11px] font-medium rounded",
+        "inline-flex items-center px-2 py-0.5 text-[11px] font-medium rounded-sm bg-secondary text-secondary-foreground",
         colorClasses,
         className
       )}
