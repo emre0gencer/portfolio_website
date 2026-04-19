@@ -10,6 +10,8 @@ import { experiences } from '@/data/experience';
 import SkillGlobe from '@/components/Common/SkillGlobe';
 import VantaWaves from '@/components/Common/VantaWaves';
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+
 export const metadata: Metadata = {
   title: 'Emre Gencer',
   description: 'Information Systems sophomore at CMU building full-stack web apps and AI-driven products.',
@@ -31,7 +33,7 @@ export default function HomePage() {
             <div className="mb-8 flex justify-center">
               <div className="relative w-28 h-28 md:w-36 md:h-36 rounded-full border-2 border-border overflow-hidden ring-2 ring-primary/20 ring-offset-2 ring-offset-background">
                 <Image
-                  src="/profile-photo.jpg"
+                  src={`${BASE}/profile-photo.jpg`}
                   alt="Emre Gencer"
                   fill
                   className="object-cover"
@@ -58,7 +60,7 @@ export default function HomePage() {
                 View Projects <ArrowRight className="h-4 w-4" />
               </Link>
               <a
-                href="/resume.pdf"
+                href={`${BASE}/resume.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 h-9 px-4 text-sm font-medium rounded-md border border-border bg-transparent text-foreground hover:bg-muted/50 transition-fast"
