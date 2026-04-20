@@ -45,7 +45,7 @@ export default function ProjectsPage() {
             ))}
           </div>
 
-          <div className="flex rounded-md border border-border overflow-hidden">
+          <div className="flex shrink-0 rounded-md border border-border overflow-hidden">
             {(['grid', 'timeline'] as const).map((mode) => (
               <button
                 key={mode}

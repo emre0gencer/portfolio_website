@@ -414,6 +414,9 @@ export default function SkillGlobe() {
         and the lines show how tools and languages connect in real projects.
         Hover or click to explore.
       </p>
+      <p className="text-center text-xs text-muted-foreground/70 max-w-md">
+        Click on skill boxes to showcase related featured work.
+      </p>
     </div>
   );
 }

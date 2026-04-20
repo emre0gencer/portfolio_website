@@ -30,8 +30,8 @@ export default function Nav() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-smooth ${
         scrolled
-          ? 'bg-background/95 backdrop-blur-md border-b border-border/60 shadow-sm'
-          : 'bg-transparent'
+          ? 'bg-background/90 backdrop-blur-lg border-b border-border shadow-[0_1px_12px_hsl(0_0%_0%/0.4)]'
+          : 'bg-transparent border-b border-transparent'
       }`}
     >
       <div className="container mx-auto px-4">

@@ -12,7 +12,7 @@ type TypeFilter = typeof TYPES[number];
 
 export default function ExperiencePage() {
   const [selectedType, setSelectedType] = useState<TypeFilter>('all');
-  const [viewMode, setViewMode] = useState<'cards' | 'timeline'>('timeline');
+  const [viewMode, setViewMode] = useState<'grid' | 'timeline'>('timeline');
 
   const filtered =
     selectedType === 'all'
@@ -47,8 +47,8 @@ export default function ExperiencePage() {
           </div>
 
           {/* View toggle */}
-          <div className="flex rounded-md border border-border overflow-hidden">
-            {(['cards', 'timeline'] as const).map((mode) => (
+          <div className="flex shrink-0 rounded-md border border-border overflow-hidden">
+            {(['grid', 'timeline'] as const).map((mode) => (
               <button
                 key={mode}
                 onClick={() => setViewMode(mode)}
@@ -65,7 +65,7 @@ export default function ExperiencePage() {
         </div>
 
         {/* Content */}
-        {viewMode === 'cards' ? (
+        {viewMode === 'grid' ? (
           <div className="max-w-4xl mx-auto space-y-4 animate-fade-in">
             {filtered.map((exp) => (
               <ExperienceCard

@@ -8,7 +8,7 @@ import ExperienceCard from '@/components/Experience/ExperienceCard';
 import { projects } from '@/data/projects';
 import { experiences } from '@/data/experience';
 import SkillGlobe from '@/components/Common/SkillGlobe';
-import VantaWaves from '@/components/Common/VantaWaves';
+import HeroGallery from '@/components/Common/HeroGallery';
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
@@ -17,6 +17,12 @@ export const metadata: Metadata = {
   description: 'Information Systems sophomore at CMU building full-stack web apps and AI-driven products.',
 };
 
+const galleryItems = [
+  { src: '/gallery/video1.mp4', title: 'ApplyEasy', desc: 'AI-powered resume tailoring with LLM bullet rewriting & PDF export', type: 'video' as const },
+  { src: '/gallery/video3.mp4', title: 'Store Management System', desc: 'Full-stack Rails app with ERD-driven MVC architecture', type: 'video' as const },
+  { src: '/gallery/video2.mp4', title: 'ExecutionLab', desc: 'Side-by-side VM execution traces & performance metrics', type: 'video' as const },
+];
+
 export default function HomePage() {
   const featuredProjects = projects.slice(0, 3);
   const recentExperiences = experiences.filter((e) => e.type === 'work' || e.type === 'research').slice(0, 2);
@@ -24,56 +30,84 @@ export default function HomePage() {
   return (
     <div className="min-h-screen text-foreground">
       {/* ── Hero ──────────────────────────────────────────────── */}
-      <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden">
-        <VantaWaves />
-        <div className="absolute inset-0 bg-background/60" />
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-2xl mx-auto text-center animate-fade-up">
-            {/* Profile photo */}
-            <div className="mb-8 flex justify-center">
-              <div className="relative w-28 h-28 md:w-36 md:h-36 rounded-full border-2 border-border overflow-hidden ring-2 ring-primary/20 ring-offset-2 ring-offset-background">
-                <Image
-                  src={`${BASE}/profile-photo.jpg`}
-                  alt="Emre Gencer"
-                  fill
-                  className="object-cover"
-                  priority
-                />
+      <section className="min-h-[92vh] flex items-center">
+        <div className="container mx-auto px-4 py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+            {/* Left — identity block */}
+            <div className="flex flex-col gap-8 animate-fade-up">
+              <div className="flex items-center gap-5">
+                <div className="relative w-28 h-28 md:w-36 md:h-36 rounded-full border border-border overflow-hidden ring-1 ring-primary/20 ring-offset-2 ring-offset-background shrink-0">
+                  <Image
+                    src={`${BASE}/profile-photo.jpg`}
+                    alt="Emre Gencer"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+                <div>
+                  <h1 className="text-3xl md:text-4xl font-bold tracking-tight bg-linear-to-r from-primary to-accent bg-clip-text text-transparent leading-tight">
+                    Emre Gencer
+                  </h1>
+                  <p className="text-sm font-medium text-foreground/60 mt-1">
+                    Information Systems · Carnegie Mellon University
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-3 max-w-md">
+                <p className="text-base text-foreground/80 leading-relaxed">
+                  Sophomore building full-stack web applications and AI-driven products.
+                </p>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Open to summer 2026 internships in software engineering, web development, and AI/ML.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3">
+                <Link
+                  href="/projects"
+                  className="inline-flex items-center gap-2 h-9 px-4 text-sm font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-fast shadow-glow"
+                >
+                  View Projects <ArrowRight className="h-4 w-4" />
+                </Link>
+                <a
+                  href={`${BASE}/resume.pdf`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 h-9 px-4 text-sm font-medium rounded-md border border-border bg-transparent text-foreground hover:bg-muted/50 transition-fast"
+                >
+                  <Download className="h-4 w-4" /> Resume
+                </a>
+              </div>
+
+              {/* Subtle divider stat row */}
+              <div className="flex gap-8 pt-2 border-t border-border/40">
+                <div>
+                  <p className="text-xl font-semibold text-foreground">{projects.length}+</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">Projects</p>
+                </div>
+                <div>
+                  <p className="text-xl font-semibold text-foreground">{experiences.length}+</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">Experiences</p>
+                </div>
+                <div>
+                  <p className="text-xl font-semibold text-foreground">CMU</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">Class of 2028</p>
+                </div>
               </div>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Emre Gencer
-            </h1>
-            <p className="text-base md:text-lg font-medium text-foreground/80 mb-2">
-              Information Systems · Carnegie Mellon University
-            </p>
-            <p className="text-sm md:text-base text-muted-foreground mb-10 max-w-lg mx-auto leading-relaxed">
-              Sophomore building full-stack web applications and AI-driven products.
-            </p>
+            {/* Right — photo gallery */}
+            <HeroGallery items={galleryItems} base={BASE} />
 
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              <Link
-                href="/projects"
-                className="inline-flex items-center gap-2 h-9 px-4 text-sm font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-fast shadow-glow"
-              >
-                View Projects <ArrowRight className="h-4 w-4" />
-              </Link>
-              <a
-                href={`${BASE}/resume.pdf`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 h-9 px-4 text-sm font-medium rounded-md border border-border bg-transparent text-foreground hover:bg-muted/50 transition-fast"
-              >
-                <Download className="h-4 w-4" /> Resume
-              </a>
-            </div>
           </div>
         </div>
       </section>
 
       {/* ── Featured Projects ─────────────────────────────────── */}
-      <Section id="projects">
+      <Section id="projects" className="border-t border-border/40">
         <div className="mb-8">
           <h2 className="text-2xl font-semibold tracking-tight mb-1">Featured Projects</h2>
           <p className="text-sm text-muted-foreground">A selection of work across web development, systems, and AI</p>
